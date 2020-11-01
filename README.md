@@ -25,7 +25,7 @@ A minimalist theme for Hugo, built with Tailwind CSS.
 Inside the folder of your Hugo site run:
 
 ```
-$ git submodule add https://github.com/leonardofaria/bento.git themes/bento
+$ git submodule add https://github.com/kasuganosora/bento.git themes/bento
 ```
 
 For more information read the official [setup guide](https://gohugo.io/overview/installing/) of Hugo.
