@@ -1,17 +1,14 @@
 {{ define "main" }}
   <div id="reading-progress-bar" role="presentation" class="fixed z-10 top-0 left-0 h-1 bg-gray-700"></div>
 
-  <article class="article">
-    <h1 class="artitle__title"><a href="{{.Permalink}}">Posts with the tag {{ .Title }}</a></h1>
-
+  <div id="tags-page" class="sub-list">
+    <header>
+        <h1><a href="{{.Permalink}}">Tag: {{ .Title }}</a></h1>
+      </header>
     {{ range .Paginator.Pages }}
-      <div class="border-b border-gray-400">
-        <h2 class="text-3xl font-bold"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-        
-        <p>{{ .Summary }}</p>
-      </div>    
+      {{ partial "post-list-item.html" . }}
     {{ end }}
-  </article>
+  </div>
 
   {{ if gt .Paginator.TotalPages 1 }}
     {{ partial "pagination.html" . }}

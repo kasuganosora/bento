@@ -1,0 +1,41 @@
+<article class="list-article">
+    <header>
+        <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+        <!-- 文章信息 -->
+        <div class="entry-meta">
+            {{ with .Params.categories }}
+                <ul class="category">
+                    {{ range . }}
+                    <li><a href="{{ "categories" | absURL}}/{{ . | urlize }}">{{ . }}</a> </li>
+                    {{ end }}
+                </ul>
+            {{ end }}
+
+            <time class="entry-date" datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time>
+        </div>
+    </header>
+
+    {{ if and (isset .Params "banner") (not (eq .Params.banner "")) }}
+    <section class="post-banner">
+        <img src="{{ .Params.banner | absURL }}" alt="{{ .Title }}">
+    </section>
+    {{ end }}
+
+    <!-- 文章简介 -->
+    {{ if .Summary }}
+    <section class="post-summary">
+        {{ .Summary }}
+    </section>
+    {{ end }}
+
+    <!-- 列表文章 下半部分 -->
+    <footer>
+        {{ with .Params.tags }}
+        <ul class="tags">
+          {{ range . }}
+            <li> <a href="{{ "tags" | absURL }}/{{ . | urlize }}">{{ . }}</a> </li>
+          {{ end }}
+        </ul>
+        {{ end }}
+    </footer>
+</article>
